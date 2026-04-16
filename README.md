@@ -103,11 +103,6 @@ El proyecto sigue principios de **Programación Orientada a Objetos** con separa
 - Análisis avanzados
 - Mejoras visuales
 
-## Autor
-
-Proyecto Universitario - ITM
-Estructura de Datos 2026-1
-
 ## Licencia
 
 Proyecto académico - Uso educativo
