@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # VERTEX - Simulador de Portafolio de Inversión
 
 ## Descripción
@@ -110,3 +111,7 @@ Estructura de Datos 2026-1
 ## Licencia
 
 Proyecto académico - Uso educativo
+=======
+# VERTEX
+Proyecto de simulación de portafolio de inversión con enfoque en análisis, visualización y experiencia de usuario
+>>>>>>> 67e2e927fbd1ef5352be833815fef5e7c27f863b
