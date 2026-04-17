@@ -6,6 +6,9 @@ from .dividendo import Dividendo
 from .activo import Activo
 from .accion import Accion
 from .renta_fija import RentaFija
+from .transaccion import Transaccion
+from .posicion import Posicion
+from .portafolio import Portafolio
 
 __all__ = [
     'PrecioDiario',
@@ -13,4 +16,7 @@ __all__ = [
     'Activo',
     'Accion',
     'RentaFija',
+    'Transaccion',
+    'Posicion',
+    'Portafolio',
 ]
