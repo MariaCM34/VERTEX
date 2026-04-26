@@ -20,8 +20,14 @@ class Accion(Activo):
         fecha_inicio: datetime | date,
         fecha_fin: datetime | date
     ) -> None:
-        """Carga datos desde MarketDataAPI. Implementación pendiente."""
-        pass
+        """Carga datos históricos y dividendos desde HistoricalDataAPI."""
+        precios = api.obtener_datos_historicos(self.simbolo, fecha_inicio, fecha_fin)
+        for precio in precios:
+            self.agregar_precio_diario(precio)
+
+        dividendos = api.obtener_dividendos(self.simbolo, fecha_inicio, fecha_fin)
+        for dividendo in dividendos:
+            self.agregar_dividendo(dividendo)
 
     def agregar_precio_diario(self, precio_diario: PrecioDiario) -> None:
         self.historial_precios.append(precio_diario)

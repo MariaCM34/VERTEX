@@ -13,3 +13,6 @@ yfinance==0.2.37
 
 # HTTP Requests
 requests==2.31.0
+
+# Environment Variables
+python-dotenv==1.0.0
