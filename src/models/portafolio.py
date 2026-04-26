@@ -180,6 +180,36 @@ class Portafolio:
         valor_actual = self.historial_valor[-1][1]
         return (valor_actual - self.capital_inicial) / self.capital_inicial
 
+    def calcular_valor_total_actual(self, api_quote) -> float:
+        """
+        Calcula el valor total del portafolio usando precios actuales de mercado.
+
+        Para acciones usa QuoteAPI (precios en tiempo real).
+        Para renta fija usa valoración calculada a fecha actual.
+
+        Args:
+            api_quote: Instancia de QuoteAPI para consultar precios actuales
+
+        Returns:
+            Valor total del portafolio (capital disponible + valor de posiciones actuales)
+
+        Raises:
+            ValueError: Si algún símbolo de acción no existe
+            ConnectionError: Si hay error de conexión con la API
+        """
+        valor_posiciones = 0.0
+
+        for posicion in self.posiciones:
+            if isinstance(posicion.activo, Accion):
+                # Acción: usar precio actual de mercado
+                precio_actual = posicion.activo.obtener_precio_actual_mercado(api_quote)
+                valor_posiciones += posicion.cantidad * precio_actual
+            else:
+                # Renta fija u otros: usar valoración calculada a fecha actual
+                valor_posiciones += posicion.obtener_valor_actual(datetime.now())
+
+        return self.capital_disponible + valor_posiciones
+
     def mostrar_resumen(self) -> str:
         """Genera un resumen del estado actual del portafolio."""
         lineas = []
