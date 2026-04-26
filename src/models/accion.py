@@ -81,3 +81,19 @@ class Accion(Activo):
 
     def obtener_valor_actual(self, fecha: datetime | date) -> float:
         return self.obtener_precio_cierre(fecha)
+
+    def obtener_precio_actual_mercado(self, api_quote) -> float:
+        """
+        Obtiene el precio actual de mercado (tiempo real) usando QuoteAPI.
+
+        Args:
+            api_quote: Instancia de QuoteAPI para consultar precio actual
+
+        Returns:
+            Precio actual de mercado del activo
+
+        Raises:
+            ValueError: Si el símbolo no existe o no tiene datos
+            ConnectionError: Si hay error de conexión con la API
+        """
+        return api_quote.obtener_precio_actual(self.simbolo)
